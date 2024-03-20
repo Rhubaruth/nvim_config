@@ -1,29 +1,30 @@
 require("lazy").setup({
-        { "folke/which-key.nvim" },
-        { "EdenEast/nightfox.nvim" },
+        { "catppuccin/nvim", -- theme
+            name = "catppuccin",
+            priority = 1000 },
+        { "EdenEast/nightfox.nvim" }, -- theme
+        { "folke/which-key.nvim" }, -- keybindings
         { "folke/neodev.nvim" },
         {
-            'nvim-telescope/telescope.nvim',
+            'nvim-telescope/telescope.nvim', -- fuzzy finder
             tag = '0.1.5',
             dependencies = { "nvim-lua/plenary.nvim" },
         },
         {
-            "nvim-treesitter/nvim-treesitter",
+            "nvim-treesitter/nvim-treesitter", -- tree sitter
             build = ":TSUpdate",
         },
-        { "terrortylor/nvim-comment" },
-        "neovim/nvim-lspconfig",
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "hrsh7th/nvim-cmp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-nvim-lua",
-        "L3MON4D3/LuaSnip",
-        "rafamadriz/friendly-snippets",
-        { "lukas-reineke/lsp-format.nvim", config = true },
+        { "terrortylor/nvim-comment" }, -- comments with shortcut
+
+        -- Mason for LSP
+        {'williamboman/mason.nvim'},
+        {'williamboman/mason-lspconfig.nvim'},
+        -- LSP Zero
+        {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
+        {'neovim/nvim-lspconfig'},
+        {'hrsh7th/cmp-nvim-lsp'},
+        {'hrsh7th/nvim-cmp'},
+        {'L3MON4D3/LuaSnip'},
     },
     {}
 )
