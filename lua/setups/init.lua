@@ -1,0 +1,5 @@
+require('setups.whichkey')
+require('setups.treesitter')
+require('setups.telescope')
+require('setups.comment')
+require('setups.lsp')

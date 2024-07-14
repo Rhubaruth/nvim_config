@@ -3,11 +3,6 @@ local o = vim.o
 
 vim.scriptencoding = "utf-8"
 
--- Map <leader>
-
-global.mapleader = " "
-global.maplocalleader = " "
-
 -- Editor options
 
 o.number = true -- Print the line number in front of each line
