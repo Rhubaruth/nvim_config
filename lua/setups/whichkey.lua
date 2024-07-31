@@ -6,55 +6,42 @@ vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 
-wk.register({
-    ["<leader>pv"] = { "<cmd>:Ex<cr>", "Open nvim explorer" },
-    ["<leader>zz"] = { "<cmd>:noh<cr>", "Turn off highlighting" },
+wk.add({
+    { "<leader>pv", "<cmd>:Ex<cr>",  desc = "Open nvim explorer" },
+    -- { "zz",         "<cmd>:noh<cr>", desc = "Turn off highlighting" },
 })
 
 -- bindings for Telescope file search
-wk.register({
-    ["<leader>f"] = {
-        name = "Fuzzy Finder",
-        f = { "<cmd>Telescope find_files<cr>", "Find File" },
-        r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-        n = { "<cmd>enew<cr>", "New File" },
-        g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
-    },
+wk.add({
+    { "<leader>f",  group = "Fuzzy Finder" },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File" },
+    { "<leader>fg", "<cmd>Telescope live_grep<cr>",  desc = "Live Grep" },
+    { "<leader>fn", "<cmd>enew<cr>",                 desc = "New File" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<cr>",   desc = "Open Recent File" },
 })
 
 -- bindings for LSP
-wk.register({
-        ["g"] = {
-            name = "LSP jumps",
-            d = { '<cmd>lua vim.lsp.buf.definition()<cr>', "Jump to definition" },
-            D = { '<cmd>lua vim.lsp.buf.declaration()<cr>', "Jump to declaration" },
-            i = { '<cmd>lua vim.lsp.buf.implementation()<cr>', "Jump to declaration" },
-            o = { '<cmd>lua vim.lsp.buf.type_definition()<cr>', "Jump to type definition" },
-            r = { '<cmd>lua vim.lsp.buf.references()<cr>', "Show references" },
-            s = { '<cmd>lua vim.lsp.buf.signature_help()<cr>', "Signature help" },
-        }
+wk.add({
+        { "g",  group = "LSP jumps" },
+        { "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>",     desc = "Jump to declaration" },
+        { "gd", "<cmd>lua vim.lsp.buf.definition()<cr>",      desc = "Jump to definition" },
+        { "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>",  desc = "Jump to declaration" },
+        { "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Jump to type definition" },
+        { "gr", "<cmd>lua vim.lsp.buf.references()<cr>",      desc = "Show references" },
+        { "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>",  desc = "Signature help" },
     },
-    {
-        mode = "n",
-    }
+    { mode = "n" }
 )
-wk.register({
-    ["K"] = { '<cmd>lua vim.lsp.buf.hover()<cr>', "Hover information" },
-    ["<F2>"] = { '<cmd>lua vim.lsp.buf.rename()<cr>', "Rename symbol" },
-    ["<F3>"] = { '<cmd>lua vim.lsp.buf.format({async = true})<cr>', "Reformat file" },
-    ["<F4>"] = { '<cmd>lua vim.lsp.buf.code_action()<cr>', "Code action" },
-
+wk.add({
+    { "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>",               desc = "Rename symbol" },
+    { "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", desc = "Reformat file" },
+    { "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>",          desc = "Code action" },
+    { "K",    "<cmd>lua vim.lsp.buf.hover()<cr>",                desc = "Hover information" },
 })
 
 
 -- bindings for Nvim-Comment
-wk.register({
-        ["<C-k>"] = { "<cmd>CommentToggle<cr>", "Toggle Comment" }
-    },
-    { mode = "n", }
-)
-wk.register({
-        ["<C-k>"] = { ":'<,'>CommentToggle<cr>gv<esc>", "Toggle Comment" }
-    },
-    { mode = "v", }
-)
+wk.add({
+    { "<C-k>", "<cmd>CommentToggle<cr>",         desc = "Toggle Comment" },
+    { "<C-k>", ":'<,'>CommentToggle<cr>gv<esc>", desc = "Toggle Comment", mode = "v" },
+})
