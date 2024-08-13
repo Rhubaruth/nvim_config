@@ -29,4 +29,18 @@ o.splitbelow = true -- When on, splitting a window will put the new window below
 o.scrolloff = 8
 
 -- o.shell = vim.fn.executable('pwsh') and 'pwsh' or 'powershell'
+--
+local function set_language_config()
+    local filetype = vim.bo.filetype
+    if filetype == "r" then
+        vim.opt.tabstop = 2
+        vim.opt.shiftwidth = 2
+        vim.opt.softtabstop = 2
+        vim.opt.expandtab = true
+    end
+end
 
+vim.api.nvim_create_autocmd({"FileType"}, {
+    pattern = {"*"},
+    callback = set_language_config,
+})
