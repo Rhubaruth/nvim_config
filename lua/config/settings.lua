@@ -22,24 +22,36 @@ o.title = true -- When on, the title of the window will be set to the value of '
 o.hidden = true -- When on a buffer becomes hidden when it is |abandon|ed
 o.ttimeoutlen = 0 -- The time in milliseconds that is waited for a key code or mapped key sequence to complete.
 o.wildmenu = true -- When 'wildmenu' is on, command-line completion operates in an enhanced mode.
-o.showcmd = true -- Show (partial) command in the last line of the screen. Set this option off if your terminal is slow.
+o.showcmd = true -- Show (partial) command in the last line of the screen.
 o.showmatch = true -- When a bracket is inserted, briefly jump to the matching one.
 o.inccommand = "split" -- When nonempty, shows the effects of :substitute, :smagic, :snomagic and user commands with the :command-preview flag as you type.
 o.splitbelow = true -- When on, splitting a window will put the new window below the current one
 o.scrolloff = 8
 
 -- o.shell = vim.fn.executable('pwsh') and 'pwsh' or 'powershell'
---
+
+-- Dynamically change config based on file type
 local function set_language_config()
     local filetype = vim.bo.filetype
+    if filetype == "netrw" then
+        return
+    end
+    -- print("Filetype detected: " .. filetype)  -- Debug print
+    -- R language
     if filetype == "r" then
-        vim.opt.tabstop = 2
-        vim.opt.shiftwidth = 2
-        vim.opt.softtabstop = 2
-        vim.opt.expandtab = true
+        o.tabstop = 2
+        o.shiftwidth = 2
+        o.softtabstop = 2
+        o.expandtab = true
+    end
+
+    -- GodotScript
+    if filetype == "gd" then
+        o.expandtab = false
     end
 end
 
+-- call function
 vim.api.nvim_create_autocmd({"FileType"}, {
     pattern = {"*"},
     callback = set_language_config,

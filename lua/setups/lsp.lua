@@ -20,3 +20,8 @@ require('mason-lspconfig').setup({
     },
 })
 
+require'lspconfig'.gdscript.setup{
+    filetypes = {
+        "gd", "gdscript", "gdscript3"
+    },
+}
