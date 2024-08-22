@@ -45,3 +45,14 @@ wk.add({
     { "<C-k>", "<cmd>CommentToggle<cr>",         desc = "Toggle Comment" },
     { "<C-k>", ":'<,'>CommentToggle<cr>gv<esc>", desc = "Toggle Comment", mode = "v" },
 })
+
+-- bindings for mbbill/UndoTree
+wk.add({
+    { "<leader><F5>", "<cmd> lua vim.cmd.UndotreeToggle()<cr>", desc = "Toggle UndoTree"},
+})
+
+-- bidings for mini.diff
+wk.add({
+    {"<leader>h", group="Git (Mini.diff)"},
+    {"<leader>hh", "<cmd>lua MiniDiff.toggle_overlay()<cr>", desc="Toggle git overlay"},
+})
