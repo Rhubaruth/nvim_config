@@ -1,9 +1,9 @@
 local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp_zero.default_keymaps({buffer = bufnr})
+    -- see :help lsp-zero-keybindings
+    -- to learn the available actions
+    lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
 -- to learn how to use mason.nvim with lsp-zero
@@ -20,8 +20,18 @@ require('mason-lspconfig').setup({
     },
 })
 
-require'lspconfig'.gdscript.setup{
+require 'lspconfig'.gdscript.setup {
     filetypes = {
         "gd", "gdscript", "gdscript3"
     },
+}
+
+require('lspconfig').r_language_server.setup {
+    cmd = { "R", "--slave", "-e", "languageserver::run()" },
+    filetypes = { "r", "rmd" },
+    -- root_dir = require('lspconfig').util.root_pattern(".git", "DESCRIPTION"),
+    on_attach = function(client, bufnr)
+        -- Your on_attach configurations
+        -- lsp_zero.default_keymaps({ buffer = bufnr })
+    end,
 }
