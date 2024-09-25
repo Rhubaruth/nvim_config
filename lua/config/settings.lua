@@ -56,3 +56,5 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     pattern = {"*"},
     callback = set_language_config,
 })
+
+global.python3_host_prog = 'C:/Users/rhubaruth/AppData/Local/Programs/Python/Launcher'
