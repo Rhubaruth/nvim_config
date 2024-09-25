@@ -1,10 +1,15 @@
 require("nvim-treesitter.configs").setup {
-    ensure_installed = { "c", "lua", "python" },
+    ensure_installed = {
+        "c", "lua", "python",
+        "markdown", "markdown_inline",
+        "r", "rnoweb", "yaml",
+    },
     highlight = { enable = true, },
 
     auto_install = false,
 
     ignore_install = { "text", },
+    prefer_git = false,
 }
 
 require('treesj').setup({
