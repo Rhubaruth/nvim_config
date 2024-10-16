@@ -38,7 +38,7 @@ local function set_language_config()
     end
     -- print("Filetype detected: " .. filetype)  -- Debug print
     -- R language
-    if filetype == "r" then
+    if filetype == "r" or filetype == "rmd" then
         o.tabstop = 2
         o.shiftwidth = 2
         o.softtabstop = 2
