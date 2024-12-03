@@ -1,3 +1,16 @@
+-- load cmp
+local cmp = require('cmp')
+
+cmp.setup({
+  mapping = {
+    ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+    ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),  -- Confirm selection with Enter
+    ['<Tab>'] = cmp.mapping.confirm({ select = true }),  -- Confirm selection with Tab
+  },
+})
+
+-- load which-key
 local wk = require("which-key")
 vim.g.mapleader = " "
 
@@ -7,7 +20,7 @@ vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 
 wk.add({
-    { "<leader>pv", "<cmd>:Ex<cr>",  desc = "Open nvim explorer" },
+    { "<leader>pv", "<cmd>:Ex<cr>", desc = "Open nvim explorer" },
     -- { "zz",         "<cmd>:noh<cr>", desc = "Turn off highlighting" },
 })
 
@@ -48,11 +61,11 @@ wk.add({
 
 -- bindings for mbbill/UndoTree
 wk.add({
-    { "<leader><F5>", "<cmd> lua vim.cmd.UndotreeToggle()<cr>", desc = "Toggle UndoTree"},
+    { "<leader><F5>", "<cmd> lua vim.cmd.UndotreeToggle()<cr>", desc = "Toggle UndoTree" },
 })
 
 -- bidings for mini.diff
 wk.add({
-    {"<leader>h", group="Git (Mini.diff)"},
-    {"<leader>hh", "<cmd>lua MiniDiff.toggle_overlay()<cr>", desc="Toggle git overlay"},
+    { "<leader>h",  group = "Git (Mini.diff)" },
+    { "<leader>hh", "<cmd>lua MiniDiff.toggle_overlay()<cr>", desc = "Toggle git overlay" },
 })
