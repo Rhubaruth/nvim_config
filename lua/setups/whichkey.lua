@@ -21,7 +21,7 @@ vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 
 wk.add({
     { "<leader>pv", "<cmd>:Ex<cr>", desc = "Open nvim explorer" },
-    -- { "zz",         "<cmd>:noh<cr>", desc = "Turn off highlighting" },
+    { "<leader>zz",         "<cmd>:noh<cr>", desc = "Turn off highlighting" },
 })
 
 -- bindings for Telescope file search
@@ -66,6 +66,6 @@ wk.add({
 
 -- bidings for mini.diff
 wk.add({
-    { "<leader>h",  group = "Git (Mini.diff)" },
-    { "<leader>hh", "<cmd>lua MiniDiff.toggle_overlay()<cr>", desc = "Toggle git overlay" },
+    { "<leader>g",  group = "Git (Mini.diff)" },
+    { "<leader>gg", "<cmd>lua MiniDiff.toggle_overlay()<cr>", desc = "Toggle git overlay" },
 })
