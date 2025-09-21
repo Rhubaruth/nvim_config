@@ -25,16 +25,23 @@ require('mason-lspconfig').setup({
     },
 })
 
-require 'lspconfig'.gdscript.setup {
-    filetypes = {
-        "gd", "gdscript", "gdscript3"
-    },
+local servers = {
+    "lua_ls",
+    "gdscript"
 }
+vim.lsp.enable(servers)
 
-require('lspconfig').r_language_server.setup {
-    cmd = { "R", "--slave", "-e", "languageserver::run()" },
-    filetypes = { "r", "rmd" },
-    -- root_dir = require('lspconfig').util.root_pattern(".git", "DESCRIPTION"),
-}
+
+-- require 'lspconfig'.gdscript.setup {
+--     filetypes = {
+--         "gd", "gdscript", "gdscript3"
+--     },
+-- }
+--
+-- require('lspconfig').r_language_server.setup {
+--     cmd = { "R", "--slave", "-e", "languageserver::run()" },
+--     filetypes = { "r", "rmd" },
+--     -- root_dir = require('lspconfig').util.root_pattern(".git", "DESCRIPTION"),
+-- }
 
 lsp_zero.setup()
