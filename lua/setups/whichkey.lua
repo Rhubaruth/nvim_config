@@ -16,8 +16,8 @@ vim.g.mapleader = " "
 
 -- bindings basic
 vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
-vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
-vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({count=-1, float=true}) end)
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({count=1, float=true}) end)
 
 wk.add({
     { "<leader>pv", "<cmd>:Ex<cr>", desc = "Open nvim explorer" },
@@ -68,4 +68,13 @@ wk.add({
 wk.add({
     { "<leader>g",  group = "Git (Mini.diff)" },
     { "<leader>gg", "<cmd>lua MiniDiff.toggle_overlay()<cr>", desc = "Toggle git overlay" },
+})
+
+-- binding for typst compilation
+wk.add({
+    { "<leader>t",  group = "Typst" },
+    { "<leader>tt", "<cmd>:w<cr>:silent !typst compile %<cr>",
+        desc = "compile current .typ files",
+        silent = true
+    },
 })
