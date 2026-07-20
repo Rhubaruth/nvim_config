@@ -1,16 +1,4 @@
-require("nvim-treesitter.configs").setup {
-    ensure_installed = {
-        "c", "lua", "python",
-        "markdown", "markdown_inline",
-        "r", "rnoweb", "yaml",
-    },
-    highlight = { enable = true, },
-
-    auto_install = false,
-
-    ignore_install = { "text", },
-    prefer_git = false,
-}
+require('nvim-treesitter').install { 'lua', 'python', 'javascript' }
 
 require('treesj').setup({
   ---@type boolean Use default keymaps (<space>m - toggle, <space>j - join, <space>s - split)
